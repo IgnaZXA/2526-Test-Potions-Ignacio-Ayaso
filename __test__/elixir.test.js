@@ -304,7 +304,6 @@ describe('Cuando los efectos de ingredientes asociados llevarán los nombres: �
     });
 
     it('El tipo será elixir', () => {
-        console.log(calmIngredients1)
         const elixir = Cauldron.createPotion(calmIngredients1);
         expect(elixir.type).toBe('elixir');
     });
