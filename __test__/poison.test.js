@@ -1,55 +1,61 @@
 const { Cauldron } = require("../src/cauldron");
 
 
-describe("Cuando todos los ingredientes llevan el efecto de tipo 'Restore'", () => {
+/**
+ * Cuando todos los ingredientes llevan el efecto de tipo“Damage”.
+ * Las reglas para crear los tests serán las mismas que en Antidotos, sólamente cambiando los nombres por “Poison of”, los tipos por “poison” y los values serán negativos.
+ * 
+ */
+
+describe("Cuando todos los ingredientes llevan el efecto de tipo 'Damage'", () => {
 
     describe('Cuando todos los ingredientes tienen el mismo atributo (INT, DEX…)', () => {
 
-        const restoreIngredients = [
+        const damageIngredients = [
             {
-                "_id": "6702b44f76863c206a48cce8",
-                "name": "Giant's Tear",
-                "description": "A tear known for its ability to enhance strength and fortitude.",
-                "value": 250,
+                "_id": "6702b46b76863c206a48ccf9",
+                "name": "Brute's Bane",
+                "description": "A potent toxin that saps strength from even the mightiest foes.",
+                "value": 80,
                 "effects": [
-                    "greater_restore_strength"
+                    "damage_strength"
                 ],
-                "image": "/images/ingredients/restore/restore_19.webp",
+                "image": "/images/ingredients/damage/damage_7.webp",
                 "type": "ingredient"
             },
             {
-                "_id": "6702b44f76863c206a48ccdc",
-                "name": "Titan's Blood",
-                "description": "A rare blood known for its ability to enhance strength tremendously.",
-                "value": 75,
+                "_id": "6702b46b76863c206a48ccfc",
+                "name": "Crimson Toxin",
+                "description": "A potent poison derived from rare red flowers that can weaken even the strongest warriors.",
+                "value": 30,
                 "effects": [
-                    "restore_strength"
+                    "lesser_damage_strength"
                 ],
-                "image": "/images/ingredients/restore/restore_7.webp",
+                "image": "/images/ingredients/damage/damage_10.webp",
                 "type": "ingredient"
             },
         ];
 
-        it(`El nombre corresponderá debera ser el correspondiente. Antidote of + ""`, () => {
-            const antidote = Cauldron.createPotion(restoreIngredients);
-            expect(antidote.name).toBe("Antidote of restore strength");
+        it(`El nombre corresponderá debera ser el correspondiente. Poison of + ""`, () => {
+            const poison = Cauldron.createPotion(damageIngredients);
+            expect(poison.name).toBe("Poison of damage strength");
         });
 
-        it(`El value será positivo e igual a la suma de los valores según la tabla de modificadores`, () => {
-            const antidote = Cauldron.createPotion(restoreIngredients);
-            // Al ser greater_restore_strength y restore_strength la suma debe ser 7
-            expect(antidote.value).toBe(7); // Igual
-            expect(antidote.value).toBeGreaterThan(0); // Positivo
+        it(`El value será negativo e igual a la suma de los valores según la tabla de modificadores`, () => {
+            const poison = Cauldron.createPotion(damageIngredients);
+            // Al ser damage_strength (3) y lesser_damage_strength (2) la suma debe ser -5
+            expect(poison.value).toBe(-5); // Igual
+            expect(poison.value).toBeLessThan(0); // Negativo
         });
 
-        it(`El tipo será "antidote"`, () => {
-            const antidote = Cauldron.createPotion(restoreIngredients);
-            expect(antidote.type).toBe('antidote');
+        it(`El tipo será "poison"`, () => {
+            const poison = Cauldron.createPotion(damageIngredients);
+            expect(poison.type).toBe('poison');
         });
     });
 
     describe("Cuando todos los ingredientes no tienen el mismo atributo(INT, DEX…)", () => {
-        it(`No podremos crear el elixir. El tipo no puede ser "antidote"`, () => {
+        it(`No podremos crear el elixir. El tipo no puede ser "poison"`, () => {
             const notAllSameAttributeIngredients = [
                 {
                     "_id": "6702b44f76863c206a48ccd7",
@@ -76,13 +82,13 @@ describe("Cuando todos los ingredientes llevan el efecto de tipo 'Restore'", () 
             ];
             const failedPotion = Cauldron.createPotion(notAllSameAttributeIngredients);
             expect(failedPotion.name).toBe('Tonic of Downfall');
-            expect(failedPotion.type).not.toBe('antidote');
+            expect(failedPotion.type).not.toBe('poison');
         });
     });
 });
 
 describe('Si alguno de los ingredientes no tiene el nombre “Restore”.', () => {
-    it(`No podremos crear un antídoto.El tipo no puede ser “antidote”`, () => {
+    it(`No podremos crear un antídoto.El tipo no puede ser poison`, () => {
         const notAllRestoreIngredients = [
 
             {
@@ -111,6 +117,6 @@ describe('Si alguno de los ingredientes no tiene el nombre “Restore”.', () =
         ];
         const failedPotion = Cauldron.createPotion(notAllRestoreIngredients);
         expect(failedPotion.name).toBe('Tonic of Downfall');
-        expect(failedPotion.type).not.toBe('antidote');
+        expect(failedPotion.type).not.toBe('poison');
     });
 });

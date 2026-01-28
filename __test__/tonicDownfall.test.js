@@ -1,18 +1,11 @@
 const { Cauldron } = require("../src/cauldron");
 
-
 describe(`Crear el Tonic of Downfall.`, () => {
-
     it(`Cuando tienes menos de 2 ingredientes`, () => {
         const ingedients = [];
-
         const potion = Cauldron.createPotion(ingedients);
-
-        console.log(potion);
-
         expect(potion.name).toBe('Tonic of Downfall');
     });
-
 
     it(`Cuando tienes más de 4 ingredientes`, () => {
         const ingedients = [
@@ -77,10 +70,7 @@ describe(`Crear el Tonic of Downfall.`, () => {
             },
 
         ];
-
         const potion = Cauldron.createPotion(ingedients);
         expect(potion.name).toBe('Tonic of Downfall');
-
-        
-    })
+    });
 });
