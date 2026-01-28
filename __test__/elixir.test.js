@@ -484,21 +484,18 @@ describe('Cuando los efectos de ingredientes asociados llevarán los nombres: �
 
 });
 
-
-
-
 describe('Cuando alguno de los efectos de ingredientes no lleva el nombre “Calm” o “Boost”', () => {
     it('No podremos crear el elixir. El tipo de la poción creada no será “elixir”', () => {
         const ingredientsToFail = [
             {
-                "_id": "6702b53d76863c206a48cd40",
-                "name": "Whispering Fern",
-                "description": "A fern that whispers strange voices, causing mild frenzy in the user.",
-                "value": 28,
+                "_id": "6702b56a76863c206a48cd44",
+                "name": "Tranquil Leaf",
+                "description": "A calming leaf that restores clarity and reduces madness.",
+                "value": 78,
                 "effects": [
-                    "lesser_frenzy"
+                    "calm"
                 ],
-                "image": "/images/ingredients/frenzy/frenzy_3.webp",
+                "image": "/images/ingredients/calm/calm_2.webp",
                 "type": "ingredient"
             },
             {
@@ -518,14 +515,3 @@ describe('Cuando alguno de los efectos de ingredientes no lleva el nombre “Cal
         expect(failedPotion.type).not.toBe('elixir');
     });
 });
-
-
-
-
-
-
-// 
-//     it. ….. mismos casos que con “Boost”, cambiando la estructura del nombre por Modifier + calm + elixir
-// Cuando alguno de los efectos de ingredientes no lleva el nombre “Calm” o “Boost”
-//     it. No podremos crear el elixir. El tipo de la poción creada no será “elixir”
-
