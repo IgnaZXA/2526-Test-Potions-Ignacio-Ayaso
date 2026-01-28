@@ -1,5 +1,5 @@
-const { testIngredients } = require ('./testIngredients');
-const { Cauldron }  = require ('./cauldron');
+const { testIngredients } = require ('./src/testIngredients');
+const { Cauldron }  = require ('./src/cauldron');
 
 console.log(testIngredients);
 
