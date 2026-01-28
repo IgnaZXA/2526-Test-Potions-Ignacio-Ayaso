@@ -272,7 +272,6 @@ describe('Cuando los efectos de ingredientes asociados llevar√°n los nombres: ‚Ä
     });
 
     it('El tipo ser√° venom', () => {
-        console.log(frenzyIngredients1)
         const elixir = Cauldron.createPotion(frenzyIngredients1);
         expect(elixir.type).toBe('venom');
     });
@@ -336,7 +335,6 @@ describe('Cuando los efectos de ingredientes asociados llevar√°n los nombres: ‚Ä
             ];
 
             const elixir = Cauldron.createPotion(lesserIngrdients);
-            console.log(elixir)
             expect(elixir.name).toBe("Lesser frenzy venom");
         });
     });
