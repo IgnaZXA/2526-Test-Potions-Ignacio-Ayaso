@@ -73,4 +73,34 @@ describe(`Crear el Tonic of Downfall.`, () => {
         const potion = Cauldron.createPotion(ingedients);
         expect(potion.name).toBe('Tonic of Downfall');
     });
+
+    it('Cuando los ingredientes no coinciden ni en el atributo ni en el efecto', () => {
+        const ingrs = [
+            {
+                "_id": "6702b44f76863c206a48cce4",
+                "name": "Fleeting Breeze",
+                "description": "A light herb that aids in restoring dexterity and grace.",
+                "value": 140,
+                "effects": [
+                    "greater_restore_dexterity"
+                ],
+                "image": "/images/ingredients/restore/restore_15.webp",
+                "type": "ingredient"
+            },
+            {
+                "_id": "6702b46b76863c206a48ccfb",
+                "name": "Sickly Sap",
+                "description": "A viscous sap that slows movement and reduces dexterity.",
+                "value": 175,
+                "effects": [
+                    "greater_damage_dexterity"
+                ],
+                "image": "/images/ingredients/damage/damage_9.webp",
+                "type": "ingredient"
+            },
+        ];
+
+        const potion = Cauldron.createPotion(ingrs);
+        expect(potion.name).toBe('Tonic of Downfall');
+    });
 });
