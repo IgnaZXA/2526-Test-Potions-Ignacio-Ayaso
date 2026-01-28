@@ -44,7 +44,7 @@ describe("Cuando todos los ingredientes llevan el efecto de tipo 'Damage'", () =
         it(`El value será negativo e igual a la suma de los valores según la tabla de modificadores`, () => {
             const poison = Cauldron.createPotion(damageIngredients);
             // Al ser damage_strength (3) y lesser_damage_strength (2) la suma debe ser -5
-            expect(poison.value).toBe(-5); // Igual
+            expect(poison.value).toBe(-1 * (3 + 2)); // Igual
             expect(poison.value).toBeLessThan(0); // Negativo
         });
 

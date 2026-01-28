@@ -38,7 +38,7 @@ describe("Cuando todos los ingredientes llevan el efecto de tipo 'Restore'", () 
         it(`El value será positivo e igual a la suma de los valores según la tabla de modificadores`, () => {
             const antidote = Cauldron.createPotion(restoreIngredients);
             // Al ser greater_restore_strength y restore_strength la suma debe ser 7
-            expect(antidote.value).toBe(7); // Igual
+            expect(antidote.value).toBe(4 + 3); // Igual
             expect(antidote.value).toBeGreaterThan(0); // Positivo
         });
 

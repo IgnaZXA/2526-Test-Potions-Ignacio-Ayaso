@@ -300,7 +300,6 @@ describe('Cuando los efectos de ingredientes asociados llevarán los nombres: �
     });
 });
 
-
 describe('Cuando alguno de los efectos de ingredientes no lleva el nombre “Decrease”.', () => {
     it('No podremos crear el elixir. El tipo de la poción creada no será “stench”.', () => {
         const ingrs = [

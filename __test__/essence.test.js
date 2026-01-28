@@ -64,7 +64,7 @@ describe('Cuando los efectos de ingredientes asociados llevarÃ¡n los nombres: â€
                     ];
 
                     const essence = Cauldron.createPotion(ingredients);
-                    expect(essence.value).toBe(60); // 25 + 25 = 50 -> 50 + (50*0.2) = 60
+                    expect(essence.value).toBe(25 + 25 + (50 * 0.2));
                 });
             });
             describe('Cuando el numero de ingredientes es 3', () => {
@@ -107,7 +107,7 @@ describe('Cuando los efectos de ingredientes asociados llevarÃ¡n los nombres: â€
                     ];
 
                     const essence = Cauldron.createPotion(ingredients);
-                    expect(essence.value).toBe(105); // 25 + 25 + 25 = 75 -> 75 + (75*0.4) = 105
+                    expect(essence.value).toBe(25 + 25 + 25 + (75 * 0.4));
                 });
             });
 
@@ -163,7 +163,7 @@ describe('Cuando los efectos de ingredientes asociados llevarÃ¡n los nombres: â€
 
                     const essence = Cauldron.createPotion(ingredients);
 
-                    expect(essence.value).toBe(180); // 25 + 25 + 25 + 25 = 100 -> 100 + (100*0.8) = 180
+                    expect(essence.value).toBe(25 + 25 + 25 + 25 + (100 * 0.8)); // 180
                 });
             });
 
